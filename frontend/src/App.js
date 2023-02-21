@@ -6,8 +6,8 @@ function App() {
   const [ linkInput, setLinkInput] = useState("");
   
   return (
-    <div className=" min-h-screen flex flex-col justify-center items-center gap-10">
-      <form className=" flex flex-col items-center gap-4 border border-black rounded w-[300px] md:w-[600px] px-4 py-10 md:px-8 " onSubmit={async (e)=> {
+    <div className=" min-h-screen flex flex-col justify-center items-center gap-10 bg-sky-200">
+      <form className=" flex flex-col items-center gap-4 border border-black rounded w-[300px] md:w-[600px] px-4 py-10 md:px-8 bg-white " onSubmit={async (e)=> {
         e.preventDefault()
         await axios.post("http://localhost:5000/", {url: linkInput})
         .then((res)=> setShortUrl(`localhost:5000/${res.data.createdUrl.shortUrl}`))
@@ -20,7 +20,7 @@ function App() {
       </form>
 
       {
-        shortUrl && <div className=" flex flex-col items-center gap-4 border border-black rounded w-[300px] md:w-[600px] px-4 py-10 md:px-8 ">
+        shortUrl && <div className=" flex flex-col items-center gap-4 border border-black rounded w-[300px] md:w-[600px] px-4 py-10 md:px-8 bg-white ">
           { shortUrl }
         </div>
       }
