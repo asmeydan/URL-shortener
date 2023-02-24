@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .radio + label {
+    color: black;
+  }
+  .radio:checked + label {
+    @apply bg-sky-600;
+    color: white;
+  }
+}
