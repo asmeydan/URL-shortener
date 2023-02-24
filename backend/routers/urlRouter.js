@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
     const createdUrl = await Url.create({
       url,
       shortUrl: nanoid(5),
+      createdAt: new Date(),
     });
     return res.status(201).json({ createdUrl });
   } catch (error) {

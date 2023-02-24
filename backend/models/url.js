@@ -8,6 +8,10 @@ const urlSchema = new mongoose.Schema({
     shortUrl: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        expires: "1h",
     }
 })
 
