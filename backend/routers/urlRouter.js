@@ -28,7 +28,7 @@ router.get("/:shortUrl", async (req, res) => {
   try {
     const shortUrl = await Url.findOne({ shortUrl: req.params.shortUrl });
     if (shortUrl == null) {
-      return res.status(400).json({ message: " wrond url" });
+      return res.status(400).json({ message: " wrong url" });
     }
     res.redirect(shortUrl.url)
   } catch (error) {

@@ -10,8 +10,11 @@ const urlSchema = new mongoose.Schema({
         required: true
     },
     createdAt: {
+        type: Date
+    },
+    expiresAt: {
         type: Date,
-        expires: "1h",
+        default: new Date().setDate(new Date().getDate() + 10)
     }
 })
 
