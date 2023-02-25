@@ -4,6 +4,7 @@ import axios from "axios";
 function App() {
   const [shortUrl, setShortUrl] = useState("");
   const [linkInput, setLinkInput] = useState("");
+  const [ expire, setExpire] = useState(3600)
 
   return (
     <div className=" min-h-screen flex flex-col justify-center items-center gap-10 bg-sky-200">
@@ -33,19 +34,19 @@ function App() {
 
           <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
             <input type="radio" name="expire" id="hour" defaultChecked className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center" htmlFor="hour">
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="hour" onClick={()=> setExpire(3600)}>
               1h
             </label>
           </div>
           <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
-            <input type="radio" name="expire" id="day" defaultChecked className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center" htmlFor="day">
+            <input type="radio" name="expire" id="day" className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="day" onClick={()=> setExpire(86400)}>
               1d
             </label>
           </div>
           <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
-            <input type="radio" name="expire" id="week" defaultChecked className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center" htmlFor="week">
+            <input type="radio" name="expire" id="week" className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="week" onClick={()=> setExpire(604800)}>
               1w
             </label>
           </div>
