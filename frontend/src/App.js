@@ -4,7 +4,7 @@ import axios from "axios";
 function App() {
   const [shortUrl, setShortUrl] = useState("");
   const [linkInput, setLinkInput] = useState("");
-  const [ expire, setExpire] = useState(3600)
+  const [ expire, setExpire] = useState(30)
 
   return (
     <div className=" min-h-screen flex flex-col justify-center items-center gap-10 bg-sky-200">
@@ -13,7 +13,7 @@ function App() {
         onSubmit={async (e) => {
           e.preventDefault();
           await axios
-            .post("http://localhost:5000/", { url: linkInput })
+            .post("http://localhost:5000/", { url: linkInput, expire: expire })
             .then((res) =>
               setShortUrl(`localhost:5000/${res.data.createdUrl.shortUrl}`)
             )
@@ -33,21 +33,27 @@ function App() {
         <div className=" flex gap-2">
 
           <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
-            <input type="radio" name="expire" id="hour" defaultChecked className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="hour" onClick={()=> setExpire(3600)}>
-              1h
-            </label>
-          </div>
-          <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
-            <input type="radio" name="expire" id="day" className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="day" onClick={()=> setExpire(86400)}>
+            <input type="radio" name="expire" id="one" className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="one" onClick={()=> setExpire(1)}>
               1d
             </label>
           </div>
           <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
-            <input type="radio" name="expire" id="week" className="radio appearance-none" />
-            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="week" onClick={()=> setExpire(604800)}>
-              1w
+            <input type="radio" name="expire" id="seven" className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="seven" onClick={()=> setExpire(7)}>
+              7d
+            </label>
+          </div>
+          <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
+            <input type="radio" name="expire" id="thirty" defaultChecked className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="thirty" onClick={()=> setExpire(30)}>
+              30d
+            </label>
+          </div>
+          <div className=" border border-black relative w-12 h-8 rounded overflow-hidden">
+            <input type="radio" name="expire" id="hundred" className="radio appearance-none" />
+            <label className=" w-full h-full absolute top-0 left-0 flex justify-center items-center cursor-pointer" htmlFor="hundred" onClick={()=> setExpire(100)}>
+              100d
             </label>
           </div>
 
