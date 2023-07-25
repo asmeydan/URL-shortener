@@ -7,7 +7,7 @@ import urlRouter from "./routers/urlRouter.js"
 
 const app = express()
 dotenv.config()
-const PORT = 5000
+const PORT = 8000
 
 app.use(cors())
 app.use(bodyParser.json({limit: '30mb', extended: true}))

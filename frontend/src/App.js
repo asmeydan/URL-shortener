@@ -13,9 +13,9 @@ function App() {
         onSubmit={async (e) => {
           e.preventDefault();
           await axios
-            .post("http://localhost:5000/", { url: linkInput, expire: expire })
+            .post(process.env.REACT_APP_BACKEND, { url: linkInput, expire: expire })
             .then((res) =>
-              setShortUrl(`localhost:5000/${res.data.createdUrl.shortUrl}`)
+              setShortUrl(`localhost:8000/${res.data.createdUrl.shortUrl}`)
             )
             .catch((err) => console.log(err));
         }}
